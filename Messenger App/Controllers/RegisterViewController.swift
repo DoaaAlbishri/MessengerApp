@@ -10,17 +10,22 @@ import UIKit
 class RegisterViewController: UIViewController {
 
     
-    @IBOutlet weak var imageView: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
     
-    @IBAction func imageViewButton(_ sender: Any) {
-    presentPhotoActionSheet()
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
+                    imageView.addGestureRecognizer(tapGR)
+                    imageView.isUserInteractionEnabled = true
     }
 
+    @objc func imageTapped(sender: UITapGestureRecognizer) {
+    presentPhotoActionSheet()
+    }
+    
+    
 }
 
 extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -63,7 +68,7 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
             return
         }
         
-        self.imageView.imageView?.image = selectedImage
+        self.imageView.image = selectedImage
         
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
