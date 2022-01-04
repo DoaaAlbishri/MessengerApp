@@ -22,6 +22,7 @@
 		8482A02F277DCEED001C9B69 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8482A02E277DCEED001C9B69 /* FirebaseDatabase */; };
 		8482A031277DCEED001C9B69 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8482A030277DCEED001C9B69 /* FirebaseStorage */; };
 		8482A035277DD055001C9B69 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8482A034277DD055001C9B69 /* GoogleService-Info.plist */; };
+		C30A70E027847011001F2834 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30A70DF27847011001F2834 /* DatabaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		8482A018277C8CE0001C9B69 /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		8482A01A277C8CF9001C9B69 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8482A034277DD055001C9B69 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C30A70DF27847011001F2834 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			children = (
 				84829FFA277C89D8001C9B69 /* AppDelegate.swift */,
 				84829FFC277C89D8001C9B69 /* SceneDelegate.swift */,
+				C30A70DF27847011001F2834 /* DatabaseManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C30A70E027847011001F2834 /* DatabaseManager.swift in Sources */,
 				8482A019277C8CE0001C9B69 /* NewConversationViewController.swift in Sources */,
 				8482A015277C8CA9001C9B69 /* LoginViewController.swift in Sources */,
 				8482A017277C8CC3001C9B69 /* RegisterViewController.swift in Sources */,
