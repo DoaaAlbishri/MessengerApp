@@ -18,9 +18,6 @@ final class DatabaseManger {
     private let database = Database.database().reference()
     
     // create a simple write function
-    
-    
-    
     public func test() {
         // NoSQL - JSON (keys and objects)
         // child refers to a key that we want to write data to
@@ -63,7 +60,6 @@ extension DatabaseManger {
     
     /// Insert new user to database
     public func insertUser(with user: ChatAppUser){
-        
         database.child(user.safeEmail).setValue(["first_name":user.firstName,"last_name":user.lastName]
         )
     }
@@ -75,7 +71,6 @@ struct ChatAppUser {
     //let profilePictureUrl: String
     
     // create a computed property safe email
-    
     var safeEmail: String {
         var safeEmail = emailAddress.replacingOccurrences(of: ".", with: "-")
         safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")

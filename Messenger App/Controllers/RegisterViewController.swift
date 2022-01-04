@@ -51,27 +51,41 @@ class RegisterViewController: UIViewController {
         //toasts
             return
         }
-        // Firebase Login / check to see if email is taken
-        // try to create an account
-        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { [weak self] authResult , error  in
+        
+        DatabaseManger.shared.userExists(with: email, completion : {
+           [weak self ] exists in
             
             guard let strongSelf = self else {
                 return
             }
-            guard let result = authResult, error == nil else {
-                print("Error creating user")
+            
+            guard  !exists  else {
+                //user already exists
+                
+                //alert / toast (p5)
                 return
             }
-            let user = result.user
-            print("Created User: \(user)")
-            // if this succeeds, dismiss
-            //strongSelf.navigationController?.dismiss(animated: true, completion: nil)
-            let storyboard = UIStoryboard(name: "Main",bundle: nil)
-            let story = storyboard.instantiateViewController(withIdentifier: "chats") as! ConversationViewController
-            strongSelf.navigationController?.pushViewController(story, animated: true)
+            // Firebase Login / check to see if email is taken
+            // try to create an account
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult , error  in
+                
+                //part 5
+                guard authResult != nil , error == nil else {
+                    print("Error creating user")
+                    return
+                }
+    //            let user = result.user
+    //            print("Created User: \(user)")
+                DatabaseManger.shared.insertUser(with: ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email))
+                
+                // if this succeeds, dismiss
+                //strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+                let storyboard = UIStoryboard(name: "Main",bundle: nil)
+                let story = storyboard.instantiateViewController(withIdentifier: "chats") as! ConversationViewController
+                strongSelf.navigationController?.pushViewController(story, animated: true)
+            })
         })
     }
-    
 }
 
 extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

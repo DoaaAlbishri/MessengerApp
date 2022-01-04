@@ -17,7 +17,7 @@ class ConversationViewController: UIViewController {
                 }
                 catch {
                 }
-        DatabaseManger.shared.test() // call test!
+        //DatabaseManger.shared.test() // call test!
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
