@@ -39,8 +39,9 @@ class LoginViewController: UIViewController {
             let user = result.user
             print("logged in user: \(user)")
             // if this succeeds, dismiss
-            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
-    })
+            strongSelf.navigationController?.popToRootViewController(animated: true)
+            
+        })
     }
     
     override func viewDidLoad() {

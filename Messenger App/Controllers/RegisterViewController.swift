@@ -65,7 +65,11 @@ class RegisterViewController: UIViewController {
             let user = result.user
             print("Created User: \(user)")
             // if this succeeds, dismiss
-            strongSelf.navigationController?.dismiss(animated: true, completion: nil)        })
+            //strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+            let storyboard = UIStoryboard(name: "Main",bundle: nil)
+            let story = storyboard.instantiateViewController(withIdentifier: "chats") as! ConversationViewController
+            strongSelf.navigationController?.pushViewController(story, animated: true)
+        })
     }
     
 }
