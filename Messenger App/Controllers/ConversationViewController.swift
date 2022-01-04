@@ -6,26 +6,34 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 class ConversationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        do {
+                    try FirebaseAuth.Auth.auth().signOut()
+                }
+                catch {
+                }
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       // let isLoggedIn = UserDefaults.standard.bool(forKey: "logged_in")
-       // if !isLoggedIn {
-            // present login view controller
-            //let vc = LoginViewController()
-            //self.navigationController?.pushViewController(vc, animated: true)
-            //            let vc = LoginViewController()
-            //            let nav = UINavigationController(rootViewController: vc)
-            //            nav.modalPresentationStyle = .fullScreen
-            //            present(nav, animated: false)
-      //  }
+        validateAuth()
     }
+    
+    func validateAuth(){
+        // current user is set automatically when you log a user in
+              if FirebaseAuth.Auth.auth().currentUser == nil {
+                  // present login view controller
+                  let vc = LoginViewController()
+                  let nav = UINavigationController(rootViewController: vc)
+                  nav.modalPresentationStyle = .fullScreen
+                  present(nav, animated: false)
+              }
+          }
 }
 
 
