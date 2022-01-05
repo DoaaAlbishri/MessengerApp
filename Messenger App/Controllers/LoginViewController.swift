@@ -24,6 +24,7 @@ class LoginViewController: UIViewController {
               !password.isEmpty
         else{
         //toasts
+            showToast(controller: self, message : "Fill all the filed please", seconds: 2.0)
             return
         }
         // Firebase Login
@@ -33,6 +34,7 @@ class LoginViewController: UIViewController {
             }
             guard let result = authResult, error == nil else {
                 print("Failed to log in user with email \(email)")
+                strongSelf.showToast(controller: strongSelf, message : "The email or password is not correct", seconds: 2.0)
                 return
             }
             let user = result.user
@@ -49,5 +51,17 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func showToast(controller: UIViewController, message : String, seconds: Double) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.view.backgroundColor = UIColor.black
+        alert.view.alpha = 0.6
+        alert.view.layer.cornerRadius = 15
+
+        controller.present(alert, animated: true)
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
+            alert.dismiss(animated: true)
+        }
+    }
 
 }

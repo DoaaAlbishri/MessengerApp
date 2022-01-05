@@ -49,6 +49,7 @@ class RegisterViewController: UIViewController {
               !password.isEmpty
         else{
         //toasts
+            showToast(controller: self, message : "Fill all the filed please", seconds: 2.0)
             return
         }
         
@@ -61,8 +62,7 @@ class RegisterViewController: UIViewController {
             
             guard  !exists  else {
                 //user already exists
-                
-                //alert / toast (p5)
+                strongSelf.showToast(controller: strongSelf, message : "user already exists", seconds: 2.0)
                 return
             }
             // Firebase Login / check to see if email is taken
@@ -72,6 +72,7 @@ class RegisterViewController: UIViewController {
                 //part 5
                 guard authResult != nil , error == nil else {
                     print("Error creating user")
+                    strongSelf.showToast(controller: strongSelf, message : "The account has not been created", seconds: 2.0)
                     return
                 }
     //            let user = result.user
@@ -82,6 +83,18 @@ class RegisterViewController: UIViewController {
                 strongSelf.navigationController?.dismiss(animated: true, completion: nil)
             })
         })
+    }
+    func showToast(controller: UIViewController, message : String, seconds: Double) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.view.backgroundColor = UIColor.black
+        alert.view.alpha = 0.6
+        alert.view.layer.cornerRadius = 15
+
+        controller.present(alert, animated: true)
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
+            alert.dismiss(animated: true)
+        }
     }
 }
 
