@@ -32,11 +32,16 @@ class ConversationViewController: UIViewController {
                   //let nav = UINavigationController(rootViewController: vc)
                   //nav.modalPresentationStyle = .fullScreen
                   //present(nav, animated: false)
-                  let storyboard = UIStoryboard(name: "Main",bundle: nil)
-                  let story = storyboard.instantiateViewController(withIdentifier: "login") as! LoginViewController
-                  //self.modalPresentationStyle = .fullScreen
-                  //present(story, animated: true, completion: nil)
-                  self.navigationController?.pushViewController(story, animated: true)
+//                  let storyboard = UIStoryboard(name: "Main",bundle: nil)
+//                  let story = storyboard.instantiateViewController(withIdentifier: "login") as! LoginViewController
+//                  //self.modalPresentationStyle = .fullScreen
+//                  //present(story, animated: true, completion: nil)
+//                  self.navigationController?.pushViewController(story, animated: true)
+                  let vc = storyboard?.instantiateViewController(withIdentifier: "login") as! LoginViewController
+                  let nav = UINavigationController(rootViewController: vc)
+                  nav.modalPresentationStyle = .fullScreen
+                  present(nav, animated: false)
+                  
               }
           }
 }

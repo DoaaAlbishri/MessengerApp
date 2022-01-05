@@ -79,10 +79,7 @@ class RegisterViewController: UIViewController {
                 DatabaseManger.shared.insertUser(with: ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email))
                 
                 // if this succeeds, dismiss
-                //strongSelf.navigationController?.dismiss(animated: true, completion: nil)
-                let storyboard = UIStoryboard(name: "Main",bundle: nil)
-                let story = storyboard.instantiateViewController(withIdentifier: "chats") as! ConversationViewController
-                strongSelf.navigationController?.pushViewController(story, animated: true)
+                strongSelf.navigationController?.dismiss(animated: true, completion: nil)
             })
         })
     }
