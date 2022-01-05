@@ -7,11 +7,10 @@
 
 import UIKit
 import FirebaseAuth
-
+import JGProgressHUD
 class RegisterViewController: UIViewController {
+    private let spinner = JGProgressHUD(style: .dark)
 
-    
-    
     @IBOutlet weak var fName: UITextField!
     
     @IBOutlet weak var lName: UITextField!
@@ -52,6 +51,7 @@ class RegisterViewController: UIViewController {
             showToast(controller: self, message : "Fill all the filed please", seconds: 2.0)
             return
         }
+        spinner.show(in: view)
         
         DatabaseManger.shared.userExists(with: email, completion : {
            [weak self ] exists in
@@ -59,12 +59,16 @@ class RegisterViewController: UIViewController {
             guard let strongSelf = self else {
                 return
             }
-            
+            DispatchQueue.main.async {
+                strongSelf.spinner.dismiss()
+
+            }
             guard  !exists  else {
                 //user already exists
                 strongSelf.showToast(controller: strongSelf, message : "user already exists", seconds: 2.0)
                 return
             }
+            
             // Firebase Login / check to see if email is taken
             // try to create an account
             FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult , error  in
