@@ -11,11 +11,7 @@ class LoginViewController: UIViewController {
 
     
     @IBOutlet weak var email: UITextField!
-    
-
     @IBOutlet weak var password: UITextField!
-    
-
     
     @IBAction func loginButton(_ sender: UIButton) {
         guard let email = email.text,
