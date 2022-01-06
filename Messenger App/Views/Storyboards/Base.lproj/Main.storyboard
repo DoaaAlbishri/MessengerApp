@@ -52,7 +52,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="8LD-Ya-46R">
                             <connections>
                                 <action selector="ComposeButton:" destination="BYZ-38-t0r" id="rFA-oM-447"/>
-                                <segue destination="u78-yq-uLQ" kind="presentation" id="v8Y-16-1xz"/>
+                                <segue destination="jre-jb-Mqx" kind="presentation" id="COy-jK-61C"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -309,9 +309,27 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a4X-33-Spc">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="4Pm-2h-OJV">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9H8-A3-diH">
+                                            <rect key="frame" x="132" y="75" width="150" height="150"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="150" id="CDc-7l-avR"/>
+                                                <constraint firstAttribute="width" constant="150" id="z1h-Jn-XDK"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="linkColor"/>
+                                    <constraints>
+                                        <constraint firstItem="9H8-A3-diH" firstAttribute="centerY" secondItem="4Pm-2h-OJV" secondAttribute="centerY" id="NAd-XU-GJM"/>
+                                        <constraint firstItem="9H8-A3-diH" firstAttribute="centerX" secondItem="4Pm-2h-OJV" secondAttribute="centerX" id="ytI-el-7Mc"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="sBg-l4-ccd">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="344.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sBg-l4-ccd" id="TuA-2b-mqi">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -325,19 +343,21 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="a4X-33-Spc" firstAttribute="leading" secondItem="fZ6-oF-9Py" secondAttribute="leading" id="5yQ-s1-gwA"/>
-                            <constraint firstItem="a4X-33-Spc" firstAttribute="top" secondItem="fZ6-oF-9Py" secondAttribute="top" id="MrA-h6-mBP"/>
+                            <constraint firstItem="a4X-33-Spc" firstAttribute="top" secondItem="fZ6-oF-9Py" secondAttribute="top" id="dM5-Ju-mPN"/>
                             <constraint firstItem="fZ6-oF-9Py" firstAttribute="trailing" secondItem="a4X-33-Spc" secondAttribute="trailing" id="h1h-NE-bAf"/>
                             <constraint firstItem="fZ6-oF-9Py" firstAttribute="bottom" secondItem="a4X-33-Spc" secondAttribute="bottom" id="kEI-PY-Ytt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="4Wh-kN-Csf"/>
                     <connections>
+                        <outlet property="headerView" destination="4Pm-2h-OJV" id="JlI-vJ-gEq"/>
+                        <outlet property="profileImage" destination="9H8-A3-diH" id="5A7-zr-Sz6"/>
                         <outlet property="tableView" destination="a4X-33-Spc" id="M8Q-9r-93D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Qb-8R-xAp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1597" y="386"/>
+            <point key="canvasLocation" x="-1597.1014492753625" y="385.71428571428572"/>
         </scene>
         <!--chats nav-->
         <scene sceneID="HdG-7e-d74">
@@ -409,7 +429,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WtS-YF-oVG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="215.94202898550725" y="1136.3839285714284"/>
+            <point key="canvasLocation" x="1126.0869565217392" y="1135.7142857142856"/>
         </scene>
         <!--New Conversation View Controller-->
         <scene sceneID="4wN-9P-9qs">
@@ -420,7 +440,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Search for users ..." showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xnd-jC-xo9">
-                                <rect key="frame" x="0.0" y="20" width="414" height="51"/>
+                                <rect key="frame" x="0.0" y="76" width="414" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Result" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZrP-h2-3NM">
@@ -430,7 +450,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="men-HU-QRQ">
-                                <rect key="frame" x="0.0" y="71" width="414" height="737"/>
+                                <rect key="frame" x="0.0" y="127" width="414" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newCell" id="Ocj-9v-ihO">
@@ -465,7 +485,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZW9-KE-cvF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-694" y="1117"/>
+            <point key="canvasLocation" x="215.94202898550725" y="1116.9642857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cc6-sp-tst">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jre-jb-Mqx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fO6-r4-HW6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="u78-yq-uLQ" kind="relationship" relationship="rootViewController" id="bBS-I9-UB3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wio-Nq-v7Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-694.20289855072474" y="1116.9642857142856"/>
         </scene>
     </scenes>
     <resources>
@@ -473,6 +511,9 @@
         <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
