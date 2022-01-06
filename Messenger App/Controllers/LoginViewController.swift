@@ -38,6 +38,7 @@ class LoginViewController: UIViewController {
                 strongSelf.showToast(controller: strongSelf, message : "The email or password is not correct", seconds: 2.0)
                 return
             }
+            UserDefaults.standard.set(email, forKey: "email")
             let user = result.user
             print("logged in user: \(user)")
             // if this succeeds, dismiss

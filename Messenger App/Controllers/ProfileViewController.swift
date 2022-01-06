@@ -7,7 +7,7 @@
 
 import UIKit
 import FirebaseAuth
-
+import FirebaseStorage
 class ProfileViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     
@@ -17,9 +17,16 @@ class ProfileViewController: UIViewController {
           //tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
           tableView.delegate = self
           tableView.dataSource = self
-          
+//        tableView.tableHeaderView = createTableHeader()
       }
-  }
+//    func createTableHeader() -> UIView? {
+//           guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
+//               return nil
+//           }
+//        //let view = UIView()
+//        rerturn nil
+//  }
+}
   extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
           return data.count
