@@ -480,7 +480,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="2Z1-xp-sF8"/>
                     <connections>
+                        <outlet property="label" destination="ZrP-h2-3NM" id="D9M-DX-ISv"/>
                         <outlet property="searchBar" destination="Xnd-jC-xo9" id="bv4-UE-Eup"/>
+                        <outlet property="tableView" destination="men-HU-QRQ" id="hU7-XA-uHP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZW9-KE-cvF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -29,7 +29,8 @@ class RegisterViewController: UIViewController {
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
                     imageView.addGestureRecognizer(tapGR)
                     imageView.isUserInteractionEnabled = true
-       // imageView.layer.borderWidth = 2
+//        imageView.layer.borderWidth = 2
+//        imageView.layer.cornerRadius = 100
     }
 
     @objc func imageTapped(sender: UITapGestureRecognizer) {

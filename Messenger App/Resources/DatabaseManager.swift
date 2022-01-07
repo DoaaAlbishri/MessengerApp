@@ -65,16 +65,79 @@ extension DatabaseManger {
     
     /// Insert new user to database
     public func insertUser(with user: ChatAppUser , completion: @escaping (Bool) -> Void ){
-        database.child(user.safeEmail).setValue(["first_name":user.firstName,"last_name":user.lastName], withCompletionBlock: { error , _ in
+        database.child(user.safeEmail).setValue(["first_name":user.firstName,"last_name":user.lastName], withCompletionBlock: { [weak self] error , _ in
+            
+            guard let strongSelf = self else {
+                return
+            }
+            
             guard error == nil else{
                 print("Failed to write to database")
                 completion(false)
                 return
             }
-            completion(true)
-        }
-        )
+           
+            strongSelf.database.child("users").observeSingleEvent(of: .value, with: { snapshot in
+                if var usersCollection = snapshot.value as? [[String: String]] {
+                    // append to user dictionary
+                    let newElement = [
+                        "name": user.firstName + " " + user.lastName,
+                        "email": user.safeEmail
+                    ]
+                    usersCollection.append(newElement)
+
+                    strongSelf.database.child("users").setValue(usersCollection, withCompletionBlock: { error, _ in
+                        guard error == nil else {
+                            completion(false)
+                            return
+                        }
+
+                        completion(true)
+                    })
+                }
+                else {
+                    // create that array
+                    let newCollection: [[String: String]] = [
+                        [
+                            "name": user.firstName + " " + user.lastName,
+                            "email": user.safeEmail
+                        ]
+                    ]
+
+                    strongSelf.database.child("users").setValue(newCollection, withCompletionBlock: { error, _ in
+                        guard error == nil else {
+                            completion(false)
+                            return
+                        }
+
+                        completion(true)
+                    })
+                }
+            })
+        })
     }
+    /// Gets all users from database
+      public func getAllUsers(completion: @escaping (Result<[[String: String]], Error>) -> Void) {
+          database.child("users").observeSingleEvent(of: .value, with: { snapshot in
+              guard let value = snapshot.value as? [[String: String]] else {
+                  completion(.failure(DatabaseError.failedToFetch))
+                  return
+              }
+
+              completion(.success(value))
+          })
+      }
+
+      public enum DatabaseError: Error {
+          case failedToFetch
+
+          public var localizedDescription: String {
+              switch self {
+              case .failedToFetch:
+                  return "This means blah failed"
+              }
+          }
+      }
 }
 struct ChatAppUser {
     let firstName: String
