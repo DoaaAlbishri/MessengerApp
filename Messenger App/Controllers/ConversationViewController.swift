@@ -8,10 +8,18 @@
 import UIKit
 import FirebaseAuth
 import JGProgressHUD
+
 class ConversationViewController: UIViewController {
     
     @IBAction func ComposeButton(_ sender: UIBarButtonItem) {
-        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "newChat") as! NewConversationViewController
+        print("yes")
+        vc.completion = { [weak self] result in
+            print(result)
+            self?.createNewConversation(result: result)
+        }
+        let nav = UINavigationController(rootViewController: vc)
+        present(nav, animated: true)
     }
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,6 +39,18 @@ class ConversationViewController: UIViewController {
         super.viewDidAppear(animated)
         validateAuth()
     }
+    
+    private func createNewConversation(result: [String:String]) {
+        guard let name = result["name"] , let email = result["email"] else {
+            return
+        }
+        let vc = ChatViewController(with: email)
+        vc.isNewConversation = true
+                   vc.title = name
+                   vc.navigationItem.largeTitleDisplayMode = .never
+                   navigationController?.pushViewController(vc, animated: true)
+       }
+
 
     func validateAuth(){
         // current user is set automatically when you log a user in
@@ -65,7 +85,7 @@ class ConversationViewController: UIViewController {
       func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
           tableView.deselectRow(at: indexPath, animated: true)
           
-          let vc = storyboard?.instantiateViewController(withIdentifier: "chat") as! ChatViewController
+          let vc = ChatViewController(with:"email")
           vc.title = "Jenny Smith"
           vc.navigationItem.largeTitleDisplayMode = .never
           navigationController?.pushViewController(vc, animated: true)

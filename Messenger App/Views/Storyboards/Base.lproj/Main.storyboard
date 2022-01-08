@@ -52,7 +52,6 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="8LD-Ya-46R">
                             <connections>
                                 <action selector="ComposeButton:" destination="BYZ-38-t0r" id="rFA-oM-447"/>
-                                <segue destination="jre-jb-Mqx" kind="presentation" id="COy-jK-61C"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -426,31 +425,32 @@
                         <viewLayoutGuide key="safeArea" id="AXU-4A-TEx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="0Ms-Ii-h2K"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WtS-YF-oVG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1126.0869565217392" y="1135.7142857142856"/>
+            <point key="canvasLocation" x="2036.2318840579712" y="1135.0446428571429"/>
         </scene>
         <!--New Conversation View Controller-->
         <scene sceneID="4wN-9P-9qs">
             <objects>
-                <viewController id="u78-yq-uLQ" customClass="NewConversationViewController" customModule="Messenger_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newChat" id="u78-yq-uLQ" customClass="NewConversationViewController" customModule="Messenger_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cKU-gk-SUp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Search for users ..." showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xnd-jC-xo9">
-                                <rect key="frame" x="0.0" y="76" width="414" height="51"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Result" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZrP-h2-3NM">
-                                <rect key="frame" x="161.5" y="408" width="91" height="26"/>
+                                <rect key="frame" x="161.5" y="435" width="91" height="26"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="men-HU-QRQ">
-                                <rect key="frame" x="0.0" y="127" width="414" height="715"/>
+                                <rect key="frame" x="0.0" y="159" width="414" height="703"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newCell" id="Ocj-9v-ihO">
@@ -495,7 +495,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jre-jb-Mqx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fO6-r4-HW6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

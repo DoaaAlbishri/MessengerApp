@@ -17,7 +17,7 @@ struct SearchResult {
 class NewConversationViewController: UIViewController {
     private let spinner = JGProgressHUD(style: .dark)
   
-    public var completion: ((SearchResult) -> (Void))?
+    public var completion: (([String:String]) -> (Void))?
 
     private var users = [[String: String]]()
 
@@ -57,15 +57,15 @@ extension NewConversationViewController: UITableViewDelegate, UITableViewDataSou
         return cell
     }
 
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        // start conversation
-//        let targetUserData = results[indexPath.row]
-//
-//        dismiss(animated: true, completion: { [weak self] in
-//            self?.completion?(targetUserData)
-//        })
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        // start conversation
+        let targetUserData = results[indexPath.row]
+
+        dismiss(animated: true, completion: { [weak self] in
+            self?.completion?(targetUserData)
+        })
+    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
